@@ -2,11 +2,9 @@ name: Blog Backend CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   lint-and-test:
@@ -16,17 +14,22 @@ jobs:
         node-version: [16.x, 18.x, 20.x]
     defaults:
       run:
-        working-directory: ./backend
+        working-directory: backend
     steps:
       - uses: actions/checkout@v3
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
       - name: Run linter on backend
         run: npm run lint
+
       - name: Run backend tests
         run: npm test
