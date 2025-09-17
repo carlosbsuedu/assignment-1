@@ -1,14 +1,5 @@
-import mongoose from "mongoose";
 import { describe, expect, test, beforeEach } from "@jest/globals";
-import {
-  createPost,
-  listAllPosts,
-  listPostsByAuthor,
-  listPostsByTag,
-  getPostById,
-  updatePost,
-  deletePost,
-} from "../services/posts.js";
+import { getPostById, updatePost, deletePost } from "../services/posts.js";
 import { Post } from "../db/models/post.js";
 const samplePosts = [
   { title: "Learning Redux", author: "Daniel Bugl", tags: ["redux"] },
