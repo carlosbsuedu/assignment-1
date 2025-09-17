@@ -5,25 +5,40 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import { defineConfig, globalIgnores } from "eslint/config";
 
 export default defineConfig([
-  globalIgnores(["dist"]),
+  // ignore build outputs
+  globalIgnores(["dist", "node_modules", "coverage"]),
+
   {
     files: ["**/*.{js,jsx}"],
+
+    // base + React/Vite plugins
     extends: [
       js.configs.recommended,
       reactHooks.configs["recommended-latest"],
       reactRefresh.configs.vite,
     ],
+
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: {
+        ...globals.browser,
+        "import.meta": "readonly", // allow Vite's import.meta
+      },
       parserOptions: {
         ecmaVersion: "latest",
         ecmaFeatures: { jsx: true },
         sourceType: "module",
       },
     },
+
     rules: {
-      "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
+      // Ignore unused vars that start with _ (or UPPERCASE constants)
+      "no-unused-vars": ["error", { varsIgnorePattern: "^(_|[A-Z_])" }],
+
+      // Helpful in React projects
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
     },
   },
 ]);

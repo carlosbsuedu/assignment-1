@@ -5,28 +5,31 @@ import { PostSorting } from "./components/PostSorting.jsx";
 import { useQuery } from "@tanstack/react-query";
 import { getPosts } from "./api/posts.js";
 import { useState } from "react";
+
 export function Blog() {
   const [author, setAuthor] = useState("");
   const [sortBy, setSortBy] = useState("createdAt");
   const [sortOrder, setSortOrder] = useState("descending");
+
   const postsQuery = useQuery({
     queryKey: ["posts", { author, sortBy, sortOrder }],
     queryFn: () => getPosts({ author, sortBy, sortOrder }),
   });
+
   const posts = postsQuery.data ?? [];
+
   return (
     <div style={{ padding: 8 }}>
-            <CreatePost />
-            <br />
-            <hr />
-            Filter by:      {" "}
+      <CreatePost />
+      <br />
+      <hr />
+      Filter by:{" "}
       <PostFilter
         field="author"
         value={author}
         onChange={(value) => setAuthor(value)}
       />
-            <br />
-           {" "}
+      <br />
       <PostSorting
         fields={["createdAt", "updatedAt"]}
         value={sortBy}
@@ -34,8 +37,8 @@ export function Blog() {
         orderValue={sortOrder}
         onOrderChange={(orderValue) => setSortOrder(orderValue)}
       />
-            <hr />
-            <PostList posts={posts} />   {" "}
+      <hr />
+      <PostList posts={posts} />
     </div>
   );
 }
