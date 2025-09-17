@@ -1,7 +1,7 @@
 import { PostList } from "./components/PostList";
 import { CreatePost } from "./components/CreatePost";
 import { PostFilter } from "./components/PostFilter";
-import { PostSorting } from "./components/PostSorting";
+import { PostSorting } from "./components/PostSorting.jsx";
 import { useQuery } from "@tanstack/react-query";
 import { getPosts } from "./api/posts.js";
 import { useState } from "react";
