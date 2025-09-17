@@ -15,20 +15,6 @@ jobs:
         working-directory: frontend
     steps:
       - uses: actions/checkout@v3
-      - name: Debug - List files
-        run: |
-          echo "=== Current directory ==="
-          pwd
-          echo "=== Frontend directory contents ==="
-          ls -la
-          echo "=== Src directory contents ==="
-          ls -la src/
-          echo "=== Components directory contents ==="
-          ls -la src/components/ || echo "Components directory not found"
-          echo "=== Find PostSorting files ==="
-          find . -name "*PostSorting*" -type f
-          echo "=== Show Blog.jsx import lines ==="
-          grep -n "PostSorting" src/Blog.jsx || echo "No PostSorting imports found"
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
