@@ -42,6 +42,15 @@ export default [
       "prefer-arrow-callback": ["error"],
       "arrow-spacing": ["error", { before: true, after: true }],
       "no-extra-parens": ["error", "all", { ignoreJSX: "multi-line" }],
+
+      // Allow unused variables with underscore prefix
+      "no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+        },
+      ],
     },
   },
 ];

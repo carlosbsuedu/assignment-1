@@ -2,9 +2,6 @@ import { describe, expect, test, beforeEach, beforeAll } from "@jest/globals";
 import mongoose from "mongoose";
 import {
   createPost,
-  listAllPosts,
-  listPostsByAuthor,
-  listPostsByTag,
   getPostById,
   updatePost,
   deletePost,
