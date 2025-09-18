@@ -69,7 +69,7 @@ describe("updating posts", () => {
     });
     const updatedPost = await Post.findById(createdSamplePosts[0]._id);
     expect(updatedPost.updatedAt.getTime()).toBeGreaterThan(
-      createdSamplePosts[0].updatedAt.getTime()
+      createdSamplePosts[0].updatedAt.getTime(),
     );
   });
   test("should fail if the id does not exist", async () => {
