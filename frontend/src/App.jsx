@@ -23,7 +23,7 @@ const router = createBrowserRouter([
 export function App() {
   return (
     <QueryClientProvider client={queryClient}>
-           {" "}
+      {" "}
       <AuthContextProvider>
         <RouterProvider router={router} />
       </AuthContextProvider>
