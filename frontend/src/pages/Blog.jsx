@@ -1,10 +1,11 @@
-import { PostList } from "./components/PostList";
-import { CreatePost } from "./components/CreatePost";
-import { PostFilter } from "./components/PostFilter";
-import { PostSorting } from "./components/PostSorting.jsx";
-import { useQuery } from "@tanstack/react-query";
-import { getPosts } from "./api/posts.js";
+import { PostList } from "../components/PostList.jsx";
+import { CreatePost } from "../components/CreatePost.jsx";
+import { PostFilter } from "../components/PostFilter.jsx";
+import { PostSorting } from "../components/PostSorting.jsx";
+import { Header } from "../components/Header.jsx";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getPosts } from "../api/posts.js";
 
 export function Blog() {
   const [author, setAuthor] = useState("");
@@ -20,22 +21,23 @@ export function Blog() {
 
   return (
     <div style={{ padding: 8 }}>
+      <Header />
+      <br />
+      <hr />
+      <br />
+      <h1>Welcome to My Blog!</h1>
       <CreatePost />
       <br />
       <hr />
       Filter by:{" "}
-      <PostFilter
-        field="author"
-        value={author}
-        onChange={(value) => setAuthor(value)}
-      />
+      <PostFilter field="author" value={author} onChange={setAuthor} />
       <br />
       <PostSorting
         fields={["createdAt", "updatedAt"]}
         value={sortBy}
-        onChange={(value) => setSortBy(value)}
+        onChange={setSortBy}
         orderValue={sortOrder}
-        onOrderChange={(orderValue) => setSortOrder(orderValue)}
+        onOrderChange={setSortOrder}
       />
       <hr />
       <PostList posts={posts} />
