@@ -48,7 +48,9 @@ jobs:
           file: ./frontend/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog-frontend:${{ github.sha }}
-          build-args: VITE_BACKEND_URL=${{ steps.deploy-backend.outputs.url }}/api/v1
+          build-args: |
+            VITE_BACKEND_URL=${{ steps.deploy-backend.outputs.url }}/api/v1
+            PORT=5173
 
       - id: deploy-frontend
         name: Deploy frontend
