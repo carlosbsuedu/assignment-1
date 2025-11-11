@@ -18,54 +18,48 @@ export function Login() {
     },
     onError: () => alert("failed to login!"),
   }); /* const loginMutation = useMutation({
-    mutationFn: () => login({ username, password }),
-    onSuccess: (data) => {
-      setToken(data.token)
-      navigate('/')
-    },
-    onError: () => alert('failed to login!'),
-  }) */
+  mutationFn: () => login({ username, password }),
+  onSuccess: (data) => {
+   setToken(data.token)
+   navigate('/')
+  },
+  onError: () => alert('failed to login!'),
+ }) */
   const handleSubmit = (e) => {
     e.preventDefault();
     loginUser(); //loginMutation.mutate()
   };
   return (
     <form onSubmit={handleSubmit}>
-            <Link to="/">Back to main page</Link>
-            <hr />     {" "}
+      <Link to="/">Back to main page</Link>
+      <hr />{" "}
       <div>
-                <label htmlFor="create-username">Username: </label>
-               {" "}
+        <label htmlFor="create-username">Username: </label>{" "}
         <input
           type="text"
           name="create-username"
           id="create-username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-        />
-             {" "}
+        />{" "}
       </div>
-            <br />     {" "}
+      <br />{" "}
       <div>
-                <label htmlFor="create-password">Password: </label>
-               {" "}
+        <label htmlFor="create-password">Password: </label>{" "}
         <input
           type="password"
           name="create-password"
           id="create-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-        />
-             {" "}
+        />{" "}
       </div>
-            <br />
-           {" "}
+      <br />{" "}
       <input
         type="submit"
         value={loading ? "Logging in..." : "Log In"}
         disabled={!username || !password || loading}
-      />
-         {" "}
+      />{" "}
     </form>
   );
 }
