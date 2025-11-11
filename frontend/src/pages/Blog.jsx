@@ -24,7 +24,6 @@ export function Blog() {
   const posts = postsQuery.data?.postsByAuthor ?? postsQuery.data?.posts ?? [];
   return (
     <div style={{ padding: 8 }}>
-      {" "}
       <Helmet>
         <title>Full-Stack React Blog</title>{" "}
         <meta
