@@ -5,22 +5,21 @@ import slug from "slug";
 export function Post({ title, contents, author, id, fullPost = false }) {
   return (
     <article>
-           {" "}
+      {" "}
       {fullPost ? (
         <h3>{title}</h3>
       ) : (
         <Link to={`/posts/${id}/${slug(title)}`}>
-                    <h3>{title}</h3>       {" "}
+          <h3>{title}</h3>{" "}
         </Link>
       )}
-            {fullPost && <div>{contents}</div>}     {" "}
+      {fullPost && <div>{contents}</div>}{" "}
       {author && (
         <em>
-                    {fullPost && <br />}
-                    Written by <User {...author} />       {" "}
+          {fullPost && <br />}
+          Written by <User {...author} />{" "}
         </em>
-      )}
-         {" "}
+      )}{" "}
     </article>
   );
 }

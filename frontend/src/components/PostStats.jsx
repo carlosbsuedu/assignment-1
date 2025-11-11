@@ -34,11 +34,11 @@ export function PostStats({ postId }) {
   }
   return (
     <div>
-            <b>{totalViews.data?.views} total views</b>     {" "}
+      <b>{totalViews.data?.views} total views</b>{" "}
       <div style={{ width: 512 }}>
-                <h3>Daily Views</h3>       {" "}
+        <h3>Daily Views</h3>{" "}
         <VictoryChart domainPadding={16}>
-                   {" "}
+          {" "}
           <VictoryBar
             labelComponent={<VictoryTooltip />}
             data={dailyViews.data?.map((d) => ({
@@ -48,14 +48,11 @@ export function PostStats({ postId }) {
                 d.views
               } views`,
             }))}
-          />
-                 {" "}
-        </VictoryChart>
-             {" "}
-      </div>
-           {" "}
+          />{" "}
+        </VictoryChart>{" "}
+      </div>{" "}
       <div style={{ width: 512 }}>
-                <h4>Daily Average Viewing Duration</h4>       {" "}
+        <h4>Daily Average Viewing Duration</h4>{" "}
         <VictoryChart
           domainPadding={16}
           containerComponent={
@@ -68,18 +65,15 @@ export function PostStats({ postId }) {
             />
           }
         >
-                             {" "}
+          {" "}
           <VictoryLine
             data={dailyDurations.data?.map((d) => ({
               x: new Date(d._id),
               y: d.averageDuration / (60 * 1000),
             }))}
           />{" "}
-                 {" "}
-        </VictoryChart>
-             {" "}
-      </div>
-         {" "}
+        </VictoryChart>{" "}
+      </div>{" "}
     </div>
   );
 }

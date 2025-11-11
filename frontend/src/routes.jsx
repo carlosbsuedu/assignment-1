@@ -38,7 +38,7 @@ export const routes = [
       const dehydratedState = useLoaderData();
       return (
         <HydrationBoundary state={dehydratedState}>
-                    <Blog />       {" "}
+          <Blog />{" "}
         </HydrationBoundary>
       );
     },
@@ -73,7 +73,7 @@ export const routes = [
       const { dehydratedState, postId } = useLoaderData();
       return (
         <HydrationBoundary state={dehydratedState}>
-                    <ViewPost postId={postId} />       {" "}
+          <ViewPost postId={postId} />{" "}
         </HydrationBoundary>
       );
     },

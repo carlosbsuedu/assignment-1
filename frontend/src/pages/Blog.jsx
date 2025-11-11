@@ -14,40 +14,36 @@ export function Blog() {
   const [sortBy, setSortBy] = useState("createdAt");
   const [sortOrder, setSortOrder] =
     useState("descending"); /* const postsQuery = useQuery({
-    queryKey: ['posts', { author, sortBy, sortOrder }],
-    queryFn: () => getPosts({ author, sortBy, sortOrder }),
-  }) 
-  const posts = postsQuery.data ?? [] */
+  queryKey: ['posts', { author, sortBy, sortOrder }],
+  queryFn: () => getPosts({ author, sortBy, sortOrder }),
+ }) 
+ const posts = postsQuery.data ?? [] */
   const postsQuery = useGraphQLQuery(author ? GET_POSTS_BY_AUTHOR : GET_POSTS, {
     variables: { author, options: { sortBy, sortOrder } },
   });
   const posts = postsQuery.data?.postsByAuthor ?? postsQuery.data?.posts ?? [];
   return (
     <div style={{ padding: 8 }}>
-           {" "}
+      {" "}
       <Helmet>
-                <title>Full-Stack React Blog</title>
-               {" "}
+        <title>Full-Stack React Blog</title>{" "}
         <meta
           name="description"
           content="A blog full of articles about full-stack React development."
-        />
-             {" "}
+        />{" "}
       </Helmet>
-            <Header />
-            <br />
-            <hr />
-            <CreatePost />
-            <br />
-            <hr />
-            Filter by:      {" "}
+      <Header />
+      <br />
+      <hr />
+      <CreatePost />
+      <br />
+      <hr /> Filter by:{" "}
       <PostFilter
         field="author"
         value={author}
         onChange={(value) => setAuthor(value)}
       />
-            <br />
-           {" "}
+      <br />{" "}
       <PostSorting
         fields={["createdAt", "updatedAt"]}
         value={sortBy}
@@ -55,8 +51,8 @@ export function Blog() {
         orderValue={sortOrder}
         onOrderChange={(orderValue) => setSortOrder(orderValue)}
       />
-            <hr />
-            <PostList posts={posts} />   {" "}
+      <hr />
+      <PostList posts={posts} />{" "}
     </div>
   );
 }

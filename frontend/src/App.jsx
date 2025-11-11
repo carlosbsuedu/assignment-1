@@ -12,15 +12,13 @@ const apolloClient = new ApolloClient({
 export function App({ children }) {
   return (
     <HelmetProvider>
-           {" "}
+      {" "}
       <ApolloProvider client={apolloClient}>
-               {" "}
+        {" "}
         <QueryClientProvider client={queryClient}>
-                    <AuthContextProvider>{children}</AuthContextProvider>       {" "}
-        </QueryClientProvider>
-             {" "}
-      </ApolloProvider>
-         {" "}
+          <AuthContextProvider>{children}</AuthContextProvider>{" "}
+        </QueryClientProvider>{" "}
+      </ApolloProvider>{" "}
     </HelmetProvider>
   );
 }

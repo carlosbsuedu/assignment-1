@@ -14,7 +14,7 @@ export async function render(req) {
   const router = createStaticRouter(handler.dataRoutes, context);
   return ReactDOMServer.renderToString(
     <App>
-            <StaticRouterProvider router={router} context={context} />   {" "}
+      <StaticRouterProvider router={router} context={context} />{" "}
     </App>
   );
 }
