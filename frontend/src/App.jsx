@@ -37,6 +37,7 @@ if (typeof window !== "undefined") {
 
   socket.on("connect", () => {
     console.log("connected to socket.io as", socket.id);
+    socket.emit("chat.message", "hello from client");
   });
 
   socket.on("connect_error", (err) => {
